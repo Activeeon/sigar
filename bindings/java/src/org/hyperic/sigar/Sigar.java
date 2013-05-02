@@ -299,6 +299,14 @@ public class Sigar implements SigarProxy {
     }
 
     /**
+     * Get processes flags.
+     * @exception SigarException on failure.
+     */
+    public PFlags getPFlags() throws SigarException {
+        return new PFlags();
+    }
+    
+    /**
      * Get system memory info.
      * @exception SigarException on failure.
      */

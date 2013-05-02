@@ -196,6 +196,8 @@ public class SigarRegistry extends AbstractMBean {
 
         registerMBean(new ReflectedMBean(this.sigarImpl, "Mem"));
 
+        registerMBean(new ReflectedMBean(this.sigarImpl, "PFlags"));
+        
         registerMBean(new ReflectedMBean(this.sigarImpl, "Swap"));
 
         registerMBean(new SigarLoadAverage(this.sigarImpl));
@@ -232,10 +234,4 @@ public class SigarRegistry extends AbstractMBean {
         }
     }
 
-    public static void main(String args[]) throws Exception {
-        MBeanServer mbs = ManagementFactory.getPlatformMBeanServer();
-        SigarRegistry a = new SigarRegistry();
-        a.registerMBeans(mbs);
-        Thread.sleep(1000 * 60 * 10);
-    }
 }
