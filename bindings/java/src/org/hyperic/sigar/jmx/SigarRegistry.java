@@ -38,6 +38,7 @@ import org.hyperic.sigar.NetInterfaceConfig;
 import org.hyperic.sigar.Sigar;
 import org.hyperic.sigar.SigarException;
 import org.hyperic.sigar.SigarLoader;
+import org.hyperic.sigar.SigarLog;
 import org.hyperic.sigar.SigarProxy;
 
 public class SigarRegistry extends AbstractMBean {
@@ -163,7 +164,7 @@ public class SigarRegistry extends AbstractMBean {
                 }
             }
         } catch (SigarException e) {
-            throw unexpectedError("FileSystemList", e);
+            SigarLog.getLogger(this.getClass().getName()).warn("FileSystemList", e);
         }
 
         try {
@@ -183,7 +184,7 @@ public class SigarRegistry extends AbstractMBean {
                 registerMBean(mbean);
             }
         } catch (SigarException e) {
-            throw unexpectedError("NetInterfaceList", e);
+            SigarLog.getLogger(this.getClass().getName()).warn("NetInterfaceList", e);
         }
 
         mbean = new ReflectedMBean(this.sigarImpl, "NetInfo");
